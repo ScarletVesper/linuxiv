@@ -1,76 +1,74 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import GuidesLayout from '../../../layouts/GuidesLayout.astro';
 import { t } from '../../../i18n/translations';
 const lang = 'de';
 ---
-<Layout title="Dalamud & XIVLauncher Anleitung" lang={lang}>
-  <div style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
-      <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Startseite</a>
-      <span>›</span>
-      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
-      <span>›</span>
-      <span style="color: #c8a96e;">Dalamud & XIVLauncher</span>
+<GuidesLayout title="Dalamud & XIVLauncher Anleitung" lang={lang}>
+  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
+    <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Startseite</a>
+    <span>›</span>
+    <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
+    <span>›</span>
+    <span style="color: #c8a96e;">Dalamud & XIVLauncher</span>
+  </div>
+  <div style="margin-bottom: 2.5rem;">
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+      <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">{t(lang, 'difficulty.easy')}</span>
     </div>
-    <div style="margin-bottom: 2.5rem;">
-      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">{t(lang, 'difficulty.easy')}</span>
-      </div>
-      <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">Dalamud & XIVLauncher</h1>
-      <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">XIVLauncher ist ein inoffizieller Launcher für FF14, der Dalamud integriert — eine Plugin-Plattform, auf der Tools wie Penumbra aufbauen. XIVLauncher wird nativ unter Linux unterstützt.</p>
-    </div>
-    <div class="prose">
-      <h2>Schritt 1: XIVLauncher installieren</h2>
-      <h3>Arch Linux / CachyOS / Manjaro (AUR)</h3>
-      <pre><code>yay -S xivlauncher
+    <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">Dalamud & XIVLauncher</h1>
+    <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">XIVLauncher ist ein inoffizieller Launcher für FF14, der Dalamud integriert — eine Plugin-Plattform, auf der Tools wie Penumbra aufbauen. XIVLauncher wird nativ unter Linux unterstützt.</p>
+  </div>
+  <div class="prose">
+    <h2>Schritt 1: XIVLauncher installieren</h2>
+    <h3>Arch Linux / CachyOS / Manjaro (AUR)</h3>
+    <pre><code>yay -S xivlauncher
 # oder
 paru -S xivlauncher</code></pre>
-      <h3>Flatpak (alle Distros)</h3>
-      <pre><code>flatpak install flathub dev.goats.xivlauncher</code></pre>
-      <h3>NixOS</h3>
-      <pre><code># In configuration.nix:
+    <h3>Flatpak (alle Distros)</h3>
+    <pre><code>flatpak install flathub dev.goats.xivlauncher</code></pre>
+    <h3>NixOS</h3>
+    <pre><code># In configuration.nix:
 environment.systemPackages = [ pkgs.xivlauncher ];</code></pre>
-      <div class="callout callout-info">
-        <strong style="color: #4a90d9;">Empfehlung:</strong> Die Flatpak-Version ist am einfachsten und bleibt automatisch aktuell. AUR-Pakete sind ebenfalls gut gepflegt.
-      </div>
-      <h2>Schritt 2: XIVLauncher starten und einrichten</h2>
-      <ol>
-        <li>Starte XIVLauncher aus dem App-Menü oder mit <code>xivlauncher</code> im Terminal</li>
-        <li>Beim ersten Start fragt der Launcher nach dem Pfad zur FF14-Installation</li>
-        <li>Falls du FF14 über Steam hast, findet XIVLauncher es meist automatisch</li>
-        <li>Logge dich mit deinem Square Enix Account ein</li>
-      </ol>
-      <h3>Steam-Integration (optional)</h3>
-      <pre><code>env PROTON_NO_ESYNC=0 %command%</code></pre>
-      <h2>Schritt 3: Dalamud aktivieren</h2>
-      <ol>
-        <li>Öffne die XIVLauncher-Einstellungen (Zahnrad-Symbol)</li>
-        <li>Gehe zu <strong>In-Game Features</strong></li>
-        <li>Aktiviere <strong>Enable Dalamud</strong></li>
-        <li>Starte das Spiel — Dalamud lädt sich beim Login automatisch</li>
-      </ol>
-      <h2>Schritt 4: Dalamud im Spiel nutzen</h2>
-      <ul>
-        <li><code>/xlplugins</code> — Plugin-Installer öffnen</li>
-        <li><code>/xlsettings</code> — Dalamud-Einstellungen</li>
-        <li><code>/xlerror</code> — Fehlerlog anzeigen</li>
-        <li><code>/xldev</code> — Entwickler-Menü</li>
-      </ul>
-      <h2>Häufige Probleme</h2>
-      <h3>Dalamud lädt nicht</h3>
-      <p>Nach FF14-Updates dauert es manchmal 1–2 Tage bis Dalamud aktualisiert wurde. Unter <strong>In-Game Features → Beta Track</strong> kannst du Early-Access-Versionen nutzen.</p>
-      <h3>Schwarzer Bildschirm beim Start</h3>
-      <pre><code>PROTON_USE_WINED3D=1</code></pre>
-      <h3>XIVLauncher findet FF14 nicht</h3>
-      <pre><code># Steam (Standard)
+    <div class="callout callout-info">
+      <strong style="color: #4a90d9;">Empfehlung:</strong> Die Flatpak-Version ist am einfachsten und bleibt automatisch aktuell. AUR-Pakete sind ebenfalls gut gepflegt.
+    </div>
+    <h2>Schritt 2: XIVLauncher starten und einrichten</h2>
+    <ol>
+      <li>Starte XIVLauncher aus dem App-Menü oder mit <code>xivlauncher</code> im Terminal</li>
+      <li>Beim ersten Start fragt der Launcher nach dem Pfad zur FF14-Installation</li>
+      <li>Falls du FF14 über Steam hast, findet XIVLauncher es meist automatisch</li>
+      <li>Logge dich mit deinem Square Enix Account ein</li>
+    </ol>
+    <h3>Steam-Integration (optional)</h3>
+    <pre><code>env PROTON_NO_ESYNC=0 %command%</code></pre>
+    <h2>Schritt 3: Dalamud aktivieren</h2>
+    <ol>
+      <li>Öffne die XIVLauncher-Einstellungen (Zahnrad-Symbol)</li>
+      <li>Gehe zu <strong>In-Game Features</strong></li>
+      <li>Aktiviere <strong>Enable Dalamud</strong></li>
+      <li>Starte das Spiel — Dalamud lädt sich beim Login automatisch</li>
+    </ol>
+    <h2>Schritt 4: Dalamud im Spiel nutzen</h2>
+    <ul>
+      <li><code>/xlplugins</code> — Plugin-Installer öffnen</li>
+      <li><code>/xlsettings</code> — Dalamud-Einstellungen</li>
+      <li><code>/xlerror</code> — Fehlerlog anzeigen</li>
+      <li><code>/xldev</code> — Entwickler-Menü</li>
+    </ul>
+    <h2>Häufige Probleme</h2>
+    <h3>Dalamud lädt nicht</h3>
+    <p>Nach FF14-Updates dauert es manchmal 1–2 Tage bis Dalamud aktualisiert wurde. Unter <strong>In-Game Features → Beta Track</strong> kannst du Early-Access-Versionen nutzen.</p>
+    <h3>Schwarzer Bildschirm beim Start</h3>
+    <pre><code>PROTON_USE_WINED3D=1</code></pre>
+    <h3>XIVLauncher findet FF14 nicht</h3>
+    <pre><code># Steam (Standard)
 ~/.steam/steam/steamapps/common/FINAL FANTASY XIV Online
 
 # Steam (Flatpak)
 ~/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/common/FINAL FANTASY XIV Online</code></pre>
-    </div>
-    <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
-      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
-      <a href={`/${lang}/guides/penumbra`} style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Penumbra →</a>
-    </div>
   </div>
-</Layout>
+  <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
+    <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
+    <a href={`/${lang}/guides/penumbra`} style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Penumbra →</a>
+  </div>
+</GuidesLayout>

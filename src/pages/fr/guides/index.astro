@@ -1,47 +1,12 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import GuidesLayout from '../../../layouts/GuidesLayout.astro';
 import { t } from '../../../i18n/translations';
 const lang = 'fr';
-const distros = [
-  { name: 'CachyOS', open: true, guides: [{ slug: 'penumbra', title: 'Penumbra' }, { slug: 'dalamud', title: 'Dalamud & XIVLauncher' }, { slug: 'textools', title: 'TexTools' }] },
-  { name: 'Fedora', open: false, guides: [] },
-  { name: 'Arch Linux', open: false, guides: [] },
-  { name: 'Ubuntu', open: false, guides: [] },
-];
 ---
-<Layout title={t(lang, 'guides.all_heading')} lang={lang}>
-  <div style="max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; display: flex; gap: 3rem; align-items: flex-start;">
-    <aside style="width: 220px; flex-shrink: 0; position: sticky; top: 84px;">
-      <p style="color: #8a8fa8; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">Distribution</p>
-      <nav style="display: flex; flex-direction: column; gap: 0.25rem;">
-        {distros.map((distro) => (
-          <details open={distro.open}>
-            <summary style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-radius: 8px; cursor: pointer; color: #e8e0d0; font-weight: 600; font-size: 0.9rem; list-style: none; user-select: none; background-color: #1a1e2a;">
-              {distro.name}<span class="chevron" style="color: #8a8fa8; font-size: 0.7rem;">▾</span>
-            </summary>
-            {distro.guides.length > 0 ? (
-              <ul style="list-style: none; padding: 0.25rem 0 0.25rem 0.75rem; margin: 0; display: flex; flex-direction: column; gap: 0.1rem;">
-                {distro.guides.map((g) => (
-                  <li><a href={`/${lang}/guides/${g.slug}`} style="display: block; padding: 0.35rem 0.75rem; border-radius: 6px; color: #8a8fa8; text-decoration: none; font-size: 0.875rem; border-left: 2px solid #2a2f3e;" onmouseover="this.style.color='#c8a96e'; this.style.borderLeftColor='#c8a96e';" onmouseout="this.style.color='#8a8fa8'; this.style.borderLeftColor='#2a2f3e';">{g.title}</a></li>
-                ))}
-              </ul>
-            ) : (
-              <p style="padding: 0.35rem 1.5rem; color: #8a8fa8; font-size: 0.8rem; font-style: italic;">Bientôt</p>
-            )}
-          </details>
-        ))}
-      </nav>
-    </aside>
-    <div style="flex: 1; min-width: 0;">
-      <h1 style="font-size: 2rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.5rem;">{t(lang, 'guides.all_heading')}</h1>
-      <p style="color: #8a8fa8; margin-bottom: 3rem;">{t(lang, 'guides.all_subheading')}</p>
-      <div style="background-color: #1a1e2a; border: 1px solid #2a2f3e; border-radius: 12px; padding: 2rem; color: #8a8fa8; font-size: 0.95rem; line-height: 1.7;">
-        Sélectionnez un guide dans la barre latérale.
-      </div>
-    </div>
+<GuidesLayout title={t(lang, 'guides.all_heading')} lang={lang}>
+  <h1 style="font-size: 2rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.5rem;">{t(lang, 'guides.all_heading')}</h1>
+  <p style="color: #8a8fa8; margin-bottom: 3rem;">{t(lang, 'guides.all_subheading')}</p>
+  <div style="background-color: #1a1e2a; border: 1px solid #2a2f3e; border-radius: 12px; padding: 2rem; color: #8a8fa8; font-size: 0.95rem; line-height: 1.7;">
+    Sélectionnez un guide dans la barre latérale.
   </div>
-  <style>
-    details[open] .chevron { transform: rotate(180deg); }
-    details summary::-webkit-details-marker { display: none; }
-  </style>
-</Layout>
+</GuidesLayout>

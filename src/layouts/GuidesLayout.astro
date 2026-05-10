@@ -1,0 +1,94 @@
+---
+import Layout from './Layout.astro';
+import { type Lang } from '../i18n/translations';
+
+interface Props {
+  title: string;
+  lang: Lang;
+}
+
+const { title, lang } = Astro.props;
+
+const distros = [
+  {
+    name: 'CachyOS',
+    open: true,
+    guides: [
+      { slug: 'penumbra', title: 'Penumbra' },
+      { slug: 'dalamud', title: 'Dalamud & XIVLauncher' },
+      { slug: 'textools', title: 'TexTools' },
+    ],
+  },
+  { name: 'Fedora', open: false, guides: [] },
+  { name: 'Arch Linux', open: false, guides: [] },
+  { name: 'Ubuntu', open: false, guides: [] },
+];
+
+const comingSoonLabel: Record<Lang, string> = {
+  en: 'Coming soon',
+  de: 'Demnächst',
+  fr: 'Bientôt',
+  ja: '近日公開',
+};
+
+const distroLabel: Record<Lang, string> = {
+  en: 'Distribution',
+  de: 'Distribution',
+  fr: 'Distribution',
+  ja: 'ディストリビューション',
+};
+
+const currentPath = Astro.url.pathname;
+---
+
+<Layout title={title} lang={lang}>
+  <div style="max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; display: flex; gap: 3rem; align-items: flex-start;">
+
+    <!-- Sidebar -->
+    <aside style="width: 220px; flex-shrink: 0; position: sticky; top: 84px;">
+      <p style="color: #8a8fa8; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem;">{distroLabel[lang]}</p>
+      <nav style="display: flex; flex-direction: column; gap: 0.25rem;">
+        {distros.map((distro) => (
+          <details open={distro.open}>
+            <summary style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-radius: 8px; cursor: pointer; color: #e8e0d0; font-weight: 600; font-size: 0.9rem; list-style: none; user-select: none; background-color: #1a1e2a;">
+              {distro.name}
+              <span class="chevron" style="color: #8a8fa8; font-size: 0.7rem;">▾</span>
+            </summary>
+            {distro.guides.length > 0 ? (
+              <ul style="list-style: none; padding: 0.25rem 0 0.25rem 0.75rem; margin: 0; display: flex; flex-direction: column; gap: 0.1rem;">
+                {distro.guides.map((g) => {
+                  const href = `/${lang}/guides/${g.slug}`;
+                  const isActive = currentPath === href || currentPath === href + '/';
+                  return (
+                    <li>
+                      <a
+                        href={href}
+                        style={`display: block; padding: 0.35rem 0.75rem; border-radius: 6px; text-decoration: none; font-size: 0.875rem; border-left: 2px solid; ${isActive ? 'color: #c8a96e; border-left-color: #c8a96e; background-color: rgba(200,169,110,0.08);' : 'color: #8a8fa8; border-left-color: #2a2f3e;'}`}
+                        onmouseover={!isActive ? "this.style.color='#c8a96e'; this.style.borderLeftColor='#c8a96e';" : ''}
+                        onmouseout={!isActive ? "this.style.color='#8a8fa8'; this.style.borderLeftColor='#2a2f3e';" : ''}
+                      >
+                        {g.title}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p style="padding: 0.35rem 1.5rem; color: #8a8fa8; font-size: 0.8rem; font-style: italic;">{comingSoonLabel[lang]}</p>
+            )}
+          </details>
+        ))}
+      </nav>
+    </aside>
+
+    <!-- Page content -->
+    <div style="flex: 1; min-width: 0;">
+      <slot />
+    </div>
+  </div>
+
+  <style>
+    details[open] .chevron { transform: rotate(180deg); }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
+</Layout>

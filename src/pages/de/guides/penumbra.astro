@@ -1,85 +1,83 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import GuidesLayout from '../../../layouts/GuidesLayout.astro';
 import { t } from '../../../i18n/translations';
 const lang = 'de';
 ---
-<Layout title="Penumbra Anleitung" lang={lang}>
-  <div style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
-      <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Startseite</a>
-      <span>›</span>
-      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
-      <span>›</span>
-      <span style="color: #c8a96e;">Penumbra</span>
-    </div>
-    <div style="margin-bottom: 2.5rem;">
-      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">{t(lang, 'difficulty.easy')}</span>
-        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">{t(lang, 'tag.recommended')}</span>
-      </div>
-      <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">Penumbra installieren</h1>
-      <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">Penumbra ist ein Dalamud-Plugin, das Mods zur Laufzeit lädt — ohne den FF14-Client direkt zu patchen. Es ist der sicherste und flexibelste Weg, Mods unter Linux zu nutzen.</p>
-    </div>
-    <div style="background-color: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem;">
-      <p style="color: #4a90d9; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">{t(lang, 'guide.prereq')}</p>
-      <ul style="list-style: none; padding: 0; margin: 0; color: #8a8fa8; font-size: 0.9rem; line-height: 1.8;">
-        <li>▸ XIVLauncher mit Dalamud ist installiert (<a href={`/${lang}/guides/dalamud`} style="color: #c8a96e;">→ Dalamud Anleitung</a>)</li>
-        <li>▸ FF14 läuft unter Linux (Proton/Wine)</li>
-      </ul>
-    </div>
-    <div class="prose">
-      <h2>Schritt 1: Penumbra über Dalamud installieren</h2>
-      <p>Starte FF14 über XIVLauncher. Dalamud wird automatisch geladen. Öffne das Plugin-Menü mit <code>/xlplugins</code> im Chat.</p>
-      <ol>
-        <li>Suche im Plugin-Installer nach <strong>Penumbra</strong></li>
-        <li>Klicke auf <strong>Installieren</strong></li>
-        <li>Nach der Installation erscheint Penumbra in der Plugin-Liste</li>
-      </ol>
-      <h2>Schritt 2: Penumbra konfigurieren</h2>
-      <p>Öffne Penumbra mit <code>/penumbra</code> im Chat oder über das Dalamud-Menü. Richte zunächst den Mod-Ordner ein:</p>
-      <ol>
-        <li>Gehe zu <strong>Settings → Root Folder</strong></li>
-        <li>Wähle einen Ordner für deine Mods, z.B. <code>~/ff14-mods</code></li>
-        <li>Klicke auf <strong>Save &amp; Rediscover Mods</strong></li>
-      </ol>
-      <div class="callout callout-warning">
-        <strong style="color: #c8a96e;">Tipp:</strong> Wähle einen Ordner außerhalb des FF14-Installationsverzeichnisses, damit Mods bei Updates nicht verloren gehen.
-      </div>
-      <h2>Schritt 3: Einen Mod installieren</h2>
-      <p>Lade einen Mod als <code>.pmp</code>- oder <code>.ttmp2</code>-Datei herunter (z.B. von Nexus Mods oder XIV Mod Archive).</p>
-      <h3>Methode A: Drag &amp; Drop</h3>
-      <ol>
-        <li>Öffne Penumbra (<code>/penumbra</code>)</li>
-        <li>Ziehe die Mod-Datei direkt in das Penumbra-Fenster</li>
-        <li>Der Mod wird automatisch importiert</li>
-      </ol>
-      <h3>Methode B: Manuell importieren</h3>
-      <ol>
-        <li>Öffne Penumbra und gehe zum Tab <strong>Mods</strong></li>
-        <li>Klicke auf <strong>Import Mod</strong></li>
-        <li>Wähle die heruntergeladene Mod-Datei aus</li>
-      </ol>
-      <h2>Schritt 4: Mod aktivieren</h2>
-      <ol>
-        <li>Klicke in der Mod-Liste auf den importierten Mod</li>
-        <li>Aktiviere ihn mit dem Schalter oben rechts</li>
-        <li>Klicke auf <strong>Apply</strong> — die Änderungen sind sofort sichtbar</li>
-      </ol>
-      <div class="callout callout-info">
-        <strong style="color: #4a90d9;">Hinweis:</strong> Penumbra lädt Mods in Echtzeit. Das Spiel muss nicht neu gestartet werden. Manche Mods erfordern jedoch einen Zonenwechsel.
-      </div>
-      <h2>Mod-Konflikte lösen</h2>
-      <p>Wenn zwei Mods dieselben Dateien ändern, zeigt Penumbra einen roten Indikator. Die Priorität lässt sich per Drag &amp; Drop anpassen — weiter oben bedeutet höhere Priorität.</p>
-      <h2>Linux-spezifische Hinweise</h2>
-      <ul>
-        <li>Der Mod-Ordner sollte im Linux-Dateisystem liegen (nicht im Wine-Prefix)</li>
-        <li>Achte auf korrekte Groß-/Kleinschreibung in Pfaden (Linux ist case-sensitive)</li>
-        <li>Symlinks werden unterstützt</li>
-      </ul>
-    </div>
-    <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
-      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
-      <a href={`/${lang}/guides/dalamud`} style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Dalamud & XIVLauncher →</a>
-    </div>
+<GuidesLayout title="Penumbra Anleitung" lang={lang}>
+  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
+    <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Startseite</a>
+    <span>›</span>
+    <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
+    <span>›</span>
+    <span style="color: #c8a96e;">Penumbra</span>
   </div>
-</Layout>
+  <div style="margin-bottom: 2.5rem;">
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+      <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">{t(lang, 'difficulty.easy')}</span>
+      <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">{t(lang, 'tag.recommended')}</span>
+    </div>
+    <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">Penumbra installieren</h1>
+    <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">Penumbra ist ein Dalamud-Plugin, das Mods zur Laufzeit lädt — ohne den FF14-Client direkt zu patchen. Es ist der sicherste und flexibelste Weg, Mods unter Linux zu nutzen.</p>
+  </div>
+  <div style="background-color: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem;">
+    <p style="color: #4a90d9; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">{t(lang, 'guide.prereq')}</p>
+    <ul style="list-style: none; padding: 0; margin: 0; color: #8a8fa8; font-size: 0.9rem; line-height: 1.8;">
+      <li>▸ XIVLauncher mit Dalamud ist installiert (<a href={`/${lang}/guides/dalamud`} style="color: #c8a96e;">→ Dalamud Anleitung</a>)</li>
+      <li>▸ FF14 läuft unter Linux (Proton/Wine)</li>
+    </ul>
+  </div>
+  <div class="prose">
+    <h2>Schritt 1: Penumbra über Dalamud installieren</h2>
+    <p>Starte FF14 über XIVLauncher. Dalamud wird automatisch geladen. Öffne das Plugin-Menü mit <code>/xlplugins</code> im Chat.</p>
+    <ol>
+      <li>Suche im Plugin-Installer nach <strong>Penumbra</strong></li>
+      <li>Klicke auf <strong>Installieren</strong></li>
+      <li>Nach der Installation erscheint Penumbra in der Plugin-Liste</li>
+    </ol>
+    <h2>Schritt 2: Penumbra konfigurieren</h2>
+    <p>Öffne Penumbra mit <code>/penumbra</code> im Chat oder über das Dalamud-Menü. Richte zunächst den Mod-Ordner ein:</p>
+    <ol>
+      <li>Gehe zu <strong>Settings → Root Folder</strong></li>
+      <li>Wähle einen Ordner für deine Mods, z.B. <code>~/ff14-mods</code></li>
+      <li>Klicke auf <strong>Save &amp; Rediscover Mods</strong></li>
+    </ol>
+    <div class="callout callout-warning">
+      <strong style="color: #c8a96e;">Tipp:</strong> Wähle einen Ordner außerhalb des FF14-Installationsverzeichnisses, damit Mods bei Updates nicht verloren gehen.
+    </div>
+    <h2>Schritt 3: Einen Mod installieren</h2>
+    <p>Lade einen Mod als <code>.pmp</code>- oder <code>.ttmp2</code>-Datei herunter (z.B. von Nexus Mods oder XIV Mod Archive).</p>
+    <h3>Methode A: Drag &amp; Drop</h3>
+    <ol>
+      <li>Öffne Penumbra (<code>/penumbra</code>)</li>
+      <li>Ziehe die Mod-Datei direkt in das Penumbra-Fenster</li>
+      <li>Der Mod wird automatisch importiert</li>
+    </ol>
+    <h3>Methode B: Manuell importieren</h3>
+    <ol>
+      <li>Öffne Penumbra und gehe zum Tab <strong>Mods</strong></li>
+      <li>Klicke auf <strong>Import Mod</strong></li>
+      <li>Wähle die heruntergeladene Mod-Datei aus</li>
+    </ol>
+    <h2>Schritt 4: Mod aktivieren</h2>
+    <ol>
+      <li>Klicke in der Mod-Liste auf den importierten Mod</li>
+      <li>Aktiviere ihn mit dem Schalter oben rechts</li>
+      <li>Klicke auf <strong>Apply</strong> — die Änderungen sind sofort sichtbar</li>
+    </ol>
+    <div class="callout callout-info">
+      <strong style="color: #4a90d9;">Hinweis:</strong> Penumbra lädt Mods in Echtzeit. Das Spiel muss nicht neu gestartet werden. Manche Mods erfordern jedoch einen Zonenwechsel.
+    </div>
+    <h2>Mod-Konflikte lösen</h2>
+    <p>Wenn zwei Mods dieselben Dateien ändern, zeigt Penumbra einen roten Indikator. Die Priorität lässt sich per Drag &amp; Drop anpassen — weiter oben bedeutet höhere Priorität.</p>
+    <h2>Linux-spezifische Hinweise</h2>
+    <ul>
+      <li>Der Mod-Ordner sollte im Linux-Dateisystem liegen (nicht im Wine-Prefix)</li>
+      <li>Achte auf korrekte Groß-/Kleinschreibung in Pfaden (Linux ist case-sensitive)</li>
+      <li>Symlinks werden unterstützt</li>
+    </ul>
+  </div>
+  <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
+    <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
+    <a href={`/${lang}/guides/dalamud`} style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Dalamud & XIVLauncher →</a>
+  </div>
+</GuidesLayout>

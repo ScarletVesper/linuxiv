@@ -1,33 +1,31 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import GuidesLayout from '../../../layouts/GuidesLayout.astro';
 import TexToolsContent from '../../../components/guides/TexToolsContent.astro';
 import { t } from '../../../i18n/translations';
 const lang = 'en';
 ---
-<Layout title="TexTools Guide" lang={lang}>
-  <div style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
-      <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Home</a>
-      <span>›</span>
-      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
-      <span>›</span>
-      <span style="color: #c8a96e;">TexTools</span>
-    </div>
-    <div style="margin-bottom: 2.5rem;">
-      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">{t(lang, 'difficulty.medium')}</span>
-      </div>
-      <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">TexTools on Linux</h1>
-      <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">TexTools is a Windows application for directly modifying FF14 files. On Linux it can be run through Wine or inside the Proton prefix.</p>
-    </div>
-    <div style="background-color: rgba(200,80,80,0.08); border: 1px solid rgba(200,80,80,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem;">
-      <p style="color: #e05a5a; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Important</p>
-      <p style="color: #8a8fa8; font-size: 0.9rem; line-height: 1.7; margin: 0;">TexTools modifies FF14 files directly. Always create a <strong style="color: #e8e0d0;">backup</strong> before installing any mods. For most use cases, <a href={`/${lang}/guides/penumbra`} style="color: #c8a96e;">Penumbra</a> is the better choice.</p>
-    </div>
-    <TexToolsContent />
-    <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
-      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
-      <a href={`/${lang}/guides/penumbra`} style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Penumbra →</a>
-    </div>
+<GuidesLayout title="TexTools Guide" lang={lang}>
+  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
+    <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Home</a>
+    <span>›</span>
+    <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
+    <span>›</span>
+    <span style="color: #c8a96e;">TexTools</span>
   </div>
-</Layout>
+  <div style="margin-bottom: 2.5rem;">
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+      <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">{t(lang, 'difficulty.medium')}</span>
+    </div>
+    <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">TexTools on Linux</h1>
+    <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">TexTools is a Windows application for directly modifying FF14 files. On Linux it can be run through Wine or inside the Proton prefix.</p>
+  </div>
+  <div style="background-color: rgba(200,80,80,0.08); border: 1px solid rgba(200,80,80,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem;">
+    <p style="color: #e05a5a; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Important</p>
+    <p style="color: #8a8fa8; font-size: 0.9rem; line-height: 1.7; margin: 0;">TexTools modifies FF14 files directly. Always create a <strong style="color: #e8e0d0;">backup</strong> before installing any mods. For most use cases, <a href={`/${lang}/guides/penumbra`} style="color: #c8a96e;">Penumbra</a> is the better choice.</p>
+  </div>
+  <TexToolsContent />
+  <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
+    <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
+    <a href={`/${lang}/guides/penumbra`} style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Penumbra →</a>
+  </div>
+</GuidesLayout>

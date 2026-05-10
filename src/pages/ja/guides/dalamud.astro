@@ -1,23 +1,21 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import GuidesLayout from '../../../layouts/GuidesLayout.astro';
 import WipBanner from '../../../components/WipBanner.astro';
 import DalamudContent from '../../../components/guides/DalamudContent.astro';
 import { t } from '../../../i18n/translations';
 const lang = 'ja';
 ---
-<Layout title="Dalamud &amp; XIVLauncher ガイド" lang={lang}>
-  <div style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
-      <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'nav.home')}</a>
-      <span>›</span>
-      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
-      <span>›</span>
-      <span style="color: #c8a96e;">Dalamud &amp; XIVLauncher</span>
-    </div>
-    <WipBanner lang={lang} />
-    <DalamudContent />
-    <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
-      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
-    </div>
+<GuidesLayout title="Dalamud &amp; XIVLauncher ガイド" lang={lang}>
+  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
+    <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'nav.home')}</a>
+    <span>›</span>
+    <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
+    <span>›</span>
+    <span style="color: #c8a96e;">Dalamud &amp; XIVLauncher</span>
   </div>
-</Layout>
+  <WipBanner lang={lang} />
+  <DalamudContent />
+  <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
+    <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
+  </div>
+</GuidesLayout>
