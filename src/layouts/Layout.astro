@@ -50,7 +50,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
     </header>
 
     <!-- Blurred content -->
-    <div>
+    <div style="filter: blur(4px); pointer-events: none; user-select: none;">
       <main>
         <slot />
       </main>
@@ -64,8 +64,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
       </footer>
     </div>
 
-    <!-- Under Construction Overlay (disabled)
-
+    <!-- Under Construction Overlay -->
     <div style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
       <div style="background-color: #13161e; border: 1px solid #2a2f3e; border-radius: 16px; padding: 3rem 3.5rem; text-align: center; max-width: 480px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.6);">
         <div style="font-size: 3rem; margin-bottom: 1.25rem;">⚒</div>
@@ -92,8 +91,6 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
         </div>
       </div>
     </div>
-
-    -->
 
     <style>
       @keyframes pulse {
