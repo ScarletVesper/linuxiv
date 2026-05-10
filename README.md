@@ -1,43 +1,27 @@
-# Astro Starter Kit: Minimal
+# linuxiv.com
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A community-driven guide website for modding **Final Fantasy XIV on Linux**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🌐 **[linuxiv.com](https://linuxiv.com)**
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## What is this?
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Modding FF14 on Linux can be tricky — most guides assume Windows. This site aims to fill that gap with clear, step-by-step instructions for getting popular modding tools up and running on Linux.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Guides
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Guide | Description |
+|-------|-------------|
+| [Dalamud & XIVLauncher](https://linuxiv.com/guides/dalamud) | Set up XIVLauncher with Dalamud plugin support |
+| [Penumbra](https://linuxiv.com/guides/penumbra) | Load mods at runtime without patching the game client (recommended) |
+| [TexTools](https://linuxiv.com/guides/textools) | Run TexTools via Wine/Proton for direct file modifications |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Contributing
 
-## 🧞 Commands
+Found an error or want to add a guide? Feel free to open an issue or pull request.
 
-All commands are run from the root of the project, from a terminal:
+## Disclaimer
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This site is not affiliated with Square Enix. Modding FF14 may violate the Terms of Service — use at your own risk.
