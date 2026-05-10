@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t } from '../../i18n/translations';
+const lang = 'ja';
+const guides = [
+  { slug: 'penumbra', title: 'Penumbra', tags: ['Mods'], difficulty: 'easy' },
+  { slug: 'dalamud', title: 'Dalamud & XIVLauncher', tags: ['Plugins', 'Launcher'], difficulty: 'easy' },
+  { slug: 'textools', title: 'TexTools', tags: ['Wine'], difficulty: 'medium' },
+];
+---
+<Layout title={t(lang, 'nav.home')} lang={lang}>
+  <section style="max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem 4rem;">
+    <div style="max-width: 700px;">
+      <div style="display: inline-flex; align-items: center; background-color: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.3); border-radius: 9999px; padding: 0.35rem 1rem; margin-bottom: 1.5rem;">
+        <span style="color: #c8a96e; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;">{t(lang, 'hero.badge')}</span>
+      </div>
+      <h1 style="font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.25rem; color: #e8e0d0;">
+        {t(lang, 'hero.headline1')}<br/>
+        <span style="background: linear-gradient(135deg, #c8a96e, #e0c68a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t(lang, 'hero.headline2')}</span>
+      </h1>
+      <p style="font-size: 1.15rem; color: #8a8fa8; line-height: 1.7; margin-bottom: 2rem;">{t(lang, 'hero.body')}</p>
+      <a href={`/${lang}/guides`} style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #c8a96e, #e0c68a); color: #0d0f14; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem;">{t(lang, 'hero.cta')}</a>
+    </div>
+  </section>
+  <section style="max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 5rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; color: #e8e0d0; margin-bottom: 0.5rem;">{t(lang, 'guides.heading')}</h2>
+    <p style="color: #8a8fa8; margin-bottom: 2rem; font-size: 0.95rem;">{t(lang, 'guides.subheading')}</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem;">
+      {guides.map((g) => (
+        <a href={`/${lang}/guides/${g.slug}`} style="display: block; background-color: #1a1e2a; border: 1px solid #2a2f3e; border-radius: 12px; padding: 1.5rem; text-decoration: none;" onmouseover="this.style.borderColor='#c8a96e'" onmouseout="this.style.borderColor='#2a2f3e'">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: #e8e0d0;">{g.title}</h3>
+            <span style={`font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; font-weight: 600; ${g.difficulty === 'easy' ? 'background-color: rgba(74,217,130,0.15); color: #4ad982;' : 'background-color: rgba(200,169,110,0.15); color: #c8a96e;'}`}>{t(lang, `difficulty.${g.difficulty}` as any)}</span>
+          </div>
+          <p style="color: #8a8fa8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">{t(lang, `${g.slug}.desc` as any)}</p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            {g.tags.map((tag) => <span style="font-size: 0.75rem; color: #8a8fa8; background-color: #13161e; border: 1px solid #2a2f3e; padding: 0.15rem 0.6rem; border-radius: 4px;">{tag}</span>)}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+  <section style="max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 5rem;">
+    <div style="background-color: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.3); border-radius: 12px; padding: 1.5rem 2rem;">
+      <p style="color: #8a8fa8; font-size: 0.9rem; line-height: 1.7; margin: 0;">
+        <strong style="color: #4a90d9;">{t(lang, 'note.disclaimer')}</strong> {t(lang, 'note.disclaimer_text')}
+      </p>
+    </div>
+  </section>
+</Layout>

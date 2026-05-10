@@ -1,0 +1,66 @@
+---
+---
+<div class="prose">
+  <h2>Step 1: Install XIVLauncher</h2>
+  <p>XIVLauncher is available as a package for most Linux distributions. Choose the method for your system:</p>
+
+  <h3>Arch Linux / CachyOS / Manjaro (AUR)</h3>
+  <pre><code>yay -S xivlauncher
+# or
+paru -S xivlauncher</code></pre>
+
+  <h3>Flatpak (all distros)</h3>
+  <pre><code>flatpak install flathub dev.goats.xivlauncher</code></pre>
+
+  <h3>NixOS</h3>
+  <pre><code># In configuration.nix:
+environment.systemPackages = [ pkgs.xivlauncher ];</code></pre>
+
+  <div class="callout callout-info">
+    <strong style="color: #4a90d9;">Recommendation:</strong> The Flatpak version is the easiest and stays updated automatically.
+    AUR packages are also well maintained.
+  </div>
+
+  <h2>Step 2: Launch and configure XIVLauncher</h2>
+  <ol>
+    <li>Start XIVLauncher from the app menu or with <code>xivlauncher</code> in the terminal</li>
+    <li>On first launch, it will ask for the path to your FF14 installation</li>
+    <li>If you have FF14 through Steam, XIVLauncher usually finds it automatically</li>
+    <li>Log in with your Square Enix account</li>
+  </ol>
+
+  <h3>Steam integration (optional)</h3>
+  <p>If you play FF14 through Steam, add XIVLauncher as a Non-Steam Game or set the Steam launch option:</p>
+  <pre><code>env PROTON_NO_ESYNC=0 %command%</code></pre>
+
+  <h2>Step 3: Enable Dalamud</h2>
+  <ol>
+    <li>Open XIVLauncher settings (gear icon)</li>
+    <li>Go to <strong>In-Game Features</strong></li>
+    <li>Enable <strong>Enable Dalamud</strong></li>
+    <li>Launch the game — Dalamud will load automatically at login</li>
+  </ol>
+
+  <h2>Step 4: Using Dalamud in-game</h2>
+  <ul>
+    <li><code>/xlplugins</code> — open the plugin installer</li>
+    <li><code>/xlsettings</code> — Dalamud settings</li>
+    <li><code>/xlerror</code> — view the error log</li>
+    <li><code>/xldev</code> — developer menu</li>
+  </ul>
+
+  <h2>Common issues</h2>
+
+  <h3>Dalamud doesn't load</h3>
+  <p>After FF14 updates it can take 1–2 days for Dalamud to be updated. Switch to <strong>In-Game Features → Beta Track</strong> for early access versions.</p>
+
+  <h3>Black screen on startup</h3>
+  <pre><code>PROTON_USE_WINED3D=1</code></pre>
+
+  <h3>XIVLauncher can't find FF14</h3>
+  <pre><code># Steam (default)
+~/.steam/steam/steamapps/common/FINAL FANTASY XIV Online
+
+# Steam (Flatpak)
+~/.var/app/com.valvesoftware.Steam/data/Steam/steamapps/common/FINAL FANTASY XIV Online</code></pre>
+</div>

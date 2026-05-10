@@ -1,0 +1,53 @@
+---
+---
+<div class="prose">
+  <h2>Step 1: Download TexTools</h2>
+  <ul>
+    <li>Official website: <strong>textools.net</strong></li>
+    <li>Download the latest version as a ZIP archive</li>
+    <li>Extract it to a location of your choice, e.g. <code>~/tools/textools</code></li>
+  </ul>
+
+  <h2>Step 2: Prepare the Wine prefix</h2>
+  <pre><code>WINEPREFIX=~/.wine-textools WINEARCH=win64 winecfg</code></pre>
+  <p>Install .NET Framework 4.8 with Winetricks:</p>
+  <pre><code>WINEPREFIX=~/.wine-textools winetricks dotnet48</code></pre>
+
+  <div class="callout callout-info">
+    <strong style="color: #4a90d9;">Tip:</strong> If Winetricks is not installed:
+    <code>sudo pacman -S winetricks</code> (Arch) or <code>sudo apt install winetricks</code> (Debian/Ubuntu)
+  </div>
+
+  <h2>Step 3: Launch TexTools</h2>
+  <pre><code>WINEPREFIX=~/.wine-textools wine ~/tools/textools/FFXIV_TexTools.exe</code></pre>
+  <p>Your Linux home directory is accessible under <code>Z:\</code>:</p>
+  <pre><code># Example for Steam:
+Z:\home\YOURNAME\.steam\steam\steamapps\common\FINAL FANTASY XIV Online</code></pre>
+
+  <h2>Step 4: Create a backup</h2>
+  <ol>
+    <li>Go to <strong>Help → Backup Index Files</strong></li>
+    <li>Choose a safe location for the backup</li>
+    <li>Wait for the process to complete</li>
+  </ol>
+
+  <h2>Step 5: Install a mod</h2>
+  <ol>
+    <li>Go to <strong>Mods → Import ModPack</strong></li>
+    <li>Select the <code>.ttmp2</code> file</li>
+    <li>Review the list of files that will be changed</li>
+    <li>Click <strong>Import</strong></li>
+  </ol>
+
+  <h2>Reverting mods</h2>
+  <ol>
+    <li>Go to <strong>Mods → Revert All Mods</strong></li>
+    <li>Alternatively: <strong>Help → Restore Index Files</strong> (uses your backup)</li>
+  </ol>
+
+  <h2>Using Proton instead of a separate Wine</h2>
+  <pre><code># Steam App ID for FF14: 39210
+~/.steam/steam/steamapps/compatdata/39210/pfx/</code></pre>
+  <pre><code>WINEPREFIX=~/.steam/steam/steamapps/compatdata/39210/pfx \
+  wine ~/tools/textools/FFXIV_TexTools.exe</code></pre>
+</div>

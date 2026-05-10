@@ -1,17 +1,19 @@
 ---
 import '../styles/global.css';
-import Analytics from '@vercel/analytics/astro';
+import { languages, t, type Lang } from '../i18n/translations';
 
 interface Props {
   title: string;
   description?: string;
+  lang: Lang;
 }
 
-const { title, description = 'Guides for installing FF14 mods on Linux' } = Astro.props;
+const { title, lang, description = t(lang, 'hero.body') } = Astro.props;
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,16 +24,28 @@ const { title, description = 'Guides for installing FF14 mods on Linux' } = Astr
   <body style="background-color: #0d0f14; color: #e8e0d0;">
     <header style="background-color: #13161e; border-bottom: 1px solid #2a2f3e; position: sticky; top: 0; z-index: 50;">
       <div style="max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px;">
-        <a href="/" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+        <a href={`/${lang}/`} style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none;">
           <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #c8a96e, #e0c68a); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; color: #0d0f14;">
             XIV
           </div>
           <span style="font-weight: 700; font-size: 1.1rem; color: #e8e0d0;">linuxiv<span style="color: #c8a96e;">.com</span></span>
         </a>
-        <nav style="display: flex; gap: 2rem; align-items: center;">
-          <a href="/" style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Home</a>
-          <a href="/guides" style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Guides</a>
-        </nav>
+        <div style="display: flex; align-items: center; gap: 2rem;">
+          <nav style="display: flex; gap: 2rem; align-items: center;">
+            <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'nav.home')}</a>
+            <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'nav.guides')}</a>
+          </nav>
+          <div style="display: flex; gap: 0.5rem; align-items: center; padding-left: 1.25rem; border-left: 1px solid #2a2f3e;">
+            {Object.entries(languages).map(([code, label]) => (
+              <a
+                href={`/${code}${pathWithoutLocale}`}
+                style={`font-size: 0.75rem; font-weight: 700; text-decoration: none; padding: 0.2rem 0.4rem; border-radius: 4px; ${code === lang ? 'color: #c8a96e; background-color: rgba(200,169,110,0.1);' : 'color: #8a8fa8;'}`}
+                onmouseover={code !== lang ? "this.style.color='#c8a96e'" : ''}
+                onmouseout={code !== lang ? "this.style.color='#8a8fa8'" : ''}
+              >{label}</a>
+            ))}
+          </div>
+        </div>
       </div>
     </header>
 
@@ -43,7 +57,8 @@ const { title, description = 'Guides for installing FF14 mods on Linux' } = Astr
 
       <footer style="border-top: 1px solid #2a2f3e; margin-top: 5rem; padding: 2rem 1.5rem; text-align: center;">
         <p style="color: #8a8fa8; font-size: 0.85rem; margin-bottom: 1rem;">
-          linuxiv.com — FF14 Modding on Linux &nbsp;·&nbsp; Not affiliated with Square Enix &nbsp;·&nbsp; <a href="mailto:contact@linuxiv.com" style="color: #c8a96e; text-decoration: none;">contact@linuxiv.com</a>
+          linuxiv.com — {t(lang, 'footer.tagline')} &nbsp;·&nbsp; {t(lang, 'footer.disclaimer')} &nbsp;·&nbsp;
+          <a href="mailto:contact@linuxiv.com" style="color: #c8a96e; text-decoration: none;">contact@linuxiv.com</a>
         </p>
         <img src="/lyra.png" alt="Lyra Morningglow" style="height: 40px; opacity: 0.5; filter: brightness(0.8);" />
       </footer>
@@ -54,14 +69,13 @@ const { title, description = 'Guides for installing FF14 mods on Linux' } = Astr
       <div style="background-color: #13161e; border: 1px solid #2a2f3e; border-radius: 16px; padding: 3rem 3.5rem; text-align: center; max-width: 480px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.6);">
         <div style="font-size: 3rem; margin-bottom: 1.25rem;">⚒</div>
         <h2 style="font-size: 1.6rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">
-          Under Construction
+          {t(lang, 'construction.title')}
         </h2>
-        <p style="color: #8a8fa8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
-          This site is currently being built.<br/>
-          FF14 Linux modding guides are coming soon.
+        <p style="color: #8a8fa8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem;">
+          {t(lang, 'construction.body')}
         </p>
         <p style="color: #8a8fa8; font-size: 0.8rem; margin-bottom: 1.5rem;">
-          Got ideas or suggestions? Reach out at <a href="mailto:contact@linuxiv.com" style="color: #c8a96e; text-decoration: none;">contact@linuxiv.com</a>
+          {t(lang, 'construction.contact')} <a href="mailto:contact@linuxiv.com" style="color: #c8a96e; text-decoration: none;">contact@linuxiv.com</a>
         </p>
         <div style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.3); border-radius: 9999px; padding: 0.4rem 1.1rem;">
           <span style="width: 7px; height: 7px; background-color: #c8a96e; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
@@ -69,8 +83,6 @@ const { title, description = 'Guides for installing FF14 mods on Linux' } = Astr
         </div>
       </div>
     </div>
-
-    <Analytics />
 
     <style>
       @keyframes pulse {

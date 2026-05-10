@@ -1,0 +1,37 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PenumbraContent from '../../../components/guides/PenumbraContent.astro';
+import { t } from '../../../i18n/translations';
+const lang = 'en';
+---
+<Layout title="Penumbra Guide" lang={lang}>
+  <div style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
+    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
+      <a href={`/${lang}/`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">Home</a>
+      <span>›</span>
+      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'breadcrumb.guides')}</a>
+      <span>›</span>
+      <span style="color: #c8a96e;">Penumbra</span>
+    </div>
+    <div style="margin-bottom: 2.5rem;">
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">{t(lang, 'difficulty.easy')}</span>
+        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">{t(lang, 'tag.recommended')}</span>
+      </div>
+      <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">Installing Penumbra</h1>
+      <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">Penumbra is a Dalamud plugin that loads mods at runtime — without directly patching the FF14 client. It's the safest and most flexible way to use mods on Linux.</p>
+    </div>
+    <div style="background-color: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem;">
+      <p style="color: #4a90d9; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">{t(lang, 'guide.prereq')}</p>
+      <ul style="list-style: none; padding: 0; margin: 0; color: #8a8fa8; font-size: 0.9rem; line-height: 1.8;">
+        <li>▸ XIVLauncher with Dalamud is installed (<a href={`/${lang}/guides/dalamud`} style="color: #c8a96e;">→ Dalamud Guide</a>)</li>
+        <li>▸ FF14 is running on Linux (Proton/Wine)</li>
+      </ul>
+    </div>
+    <PenumbraContent />
+    <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
+      <a href={`/${lang}/guides`} style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">{t(lang, 'guide.back')}</a>
+      <a href={`/${lang}/guides/dalamud`} style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Dalamud & XIVLauncher →</a>
+    </div>
+  </div>
+</Layout>

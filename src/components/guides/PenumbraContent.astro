@@ -1,0 +1,77 @@
+---
+---
+<div class="prose">
+  <h2>Step 1: Install Penumbra via Dalamud</h2>
+  <p>
+    Launch FF14 through XIVLauncher. Dalamud will load automatically.
+    Open the plugin menu with <code>/xlplugins</code> in the chat.
+  </p>
+  <ol>
+    <li>Search for <strong>Penumbra</strong> in the plugin installer</li>
+    <li>Click <strong>Install</strong></li>
+    <li>After installation, Penumbra will appear in the plugin list</li>
+  </ol>
+
+  <h2>Step 2: Configure Penumbra</h2>
+  <p>
+    Open Penumbra with <code>/penumbra</code> in the chat or through the Dalamud menu.
+    First, set up your mod folder:
+  </p>
+  <ol>
+    <li>Go to <strong>Settings → Root Folder</strong></li>
+    <li>Choose a folder where your mods will be stored, e.g. <code>~/ff14-mods</code></li>
+    <li>Click <strong>Save &amp; Rediscover Mods</strong></li>
+  </ol>
+
+  <div class="callout callout-warning">
+    <strong style="color: #c8a96e;">Tip:</strong> Choose a folder outside the FF14 installation directory
+    so mods are not lost during updates.
+  </div>
+
+  <h2>Step 3: Install a mod</h2>
+  <p>
+    Download a mod as a <code>.pmp</code> or <code>.ttmp2</code> file (e.g. from Nexus Mods or XIV Mod Archive).
+    There are two ways to install it:
+  </p>
+
+  <h3>Method A: Drag &amp; Drop</h3>
+  <ol>
+    <li>Open Penumbra (<code>/penumbra</code>)</li>
+    <li>Drag the mod file directly into the Penumbra window</li>
+    <li>The mod will be imported automatically and appear in the list</li>
+  </ol>
+
+  <h3>Method B: Manual import</h3>
+  <ol>
+    <li>Open Penumbra and go to the <strong>Mods</strong> tab</li>
+    <li>Click <strong>Import Mod</strong></li>
+    <li>Select the downloaded mod file</li>
+  </ol>
+
+  <h2>Step 4: Enable the mod</h2>
+  <ol>
+    <li>In the mod list: click on the imported mod</li>
+    <li>Enable it using the toggle in the top right</li>
+    <li>Click <strong>Apply</strong> — changes will be visible in-game immediately</li>
+  </ol>
+
+  <div class="callout callout-info">
+    <strong style="color: #4a90d9;">Note:</strong> Penumbra loads mods in real time. You do not need to restart the game.
+    Some mods may require a zone change or scene reload to take effect.
+  </div>
+
+  <h2>Resolving mod conflicts</h2>
+  <p>
+    If two mods modify the same files, conflicts can occur.
+    Penumbra highlights these in the mod list with a red indicator.
+    You can adjust mod priority by dragging them in the list —
+    higher up means higher priority.
+  </p>
+
+  <h2>Linux-specific notes</h2>
+  <ul>
+    <li>The mod folder should be on the Linux filesystem (not inside the Wine prefix), unless you have a specific reason</li>
+    <li>Pay attention to case sensitivity in paths (Linux is case-sensitive)</li>
+    <li>Symlinks are supported</li>
+  </ul>
+</div>
