@@ -1,6 +1,6 @@
 # linuxiv.com
 
-A community-driven guide website for modding **Final Fantasy XIV on Linux**.
+My personal guide website for modding **Final Fantasy XIV on Linux**.
 
 🌐 **[linuxiv.com](https://linuxiv.com)**
 
@@ -8,7 +8,7 @@ A community-driven guide website for modding **Final Fantasy XIV on Linux**.
 
 ## What is this?
 
-Modding FF14 on Linux can be tricky — most guides assume Windows. This site aims to fill that gap with clear, step-by-step instructions for getting popular modding tools up and running on Linux.
+I play Final Fantasy XIV on Linux and modding can be tricky — most guides out there assume Windows. I created this site to fill that gap with clear, step-by-step instructions for getting popular modding tools up and running on Linux.
 
 ## Guides
 
