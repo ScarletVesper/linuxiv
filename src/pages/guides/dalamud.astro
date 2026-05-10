@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Dalamud & XIVLauncher Guide" description="XIVLauncher und Dalamud auf Linux installieren für FF14 Plugins und Mods">
+<Layout title="Dalamud & XIVLauncher Guide" description="How to install XIVLauncher and Dalamud on Linux for FF14 plugins and mods">
   <div style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
     <!-- Breadcrumb -->
     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
@@ -16,29 +16,29 @@ import Layout from '../../layouts/Layout.astro';
     <!-- Header -->
     <div style="margin-bottom: 2.5rem;">
       <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">Einfach</span>
+        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">Easy</span>
       </div>
       <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">Dalamud & XIVLauncher</h1>
       <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">
-        XIVLauncher ist ein inoffizieller Launcher für FF14, der Dalamud integriert —
-        eine Plugin-Plattform, auf der Tools wie Penumbra aufbauen.
-        Auf Linux wird XIVLauncher nativ unterstützt.
+        XIVLauncher is an unofficial launcher for FF14 that integrates Dalamud —
+        a plugin platform that tools like Penumbra are built on.
+        XIVLauncher has native Linux support.
       </p>
     </div>
 
     <div class="prose">
-      <h2>Schritt 1: XIVLauncher installieren</h2>
+      <h2>Step 1: Install XIVLauncher</h2>
       <p>
-        XIVLauncher ist für die meisten Linux-Distributionen als Paket verfügbar.
-        Wähle die Methode passend zu deinem System:
+        XIVLauncher is available as a package for most Linux distributions.
+        Choose the method for your system:
       </p>
 
       <h3>Arch Linux / CachyOS / Manjaro (AUR)</h3>
       <pre><code>yay -S xivlauncher
-# oder
+# or
 paru -S xivlauncher</code></pre>
 
-      <h3>Flatpak (alle Distros)</h3>
+      <h3>Flatpak (all distros)</h3>
       <pre><code>flatpak install flathub dev.goats.xivlauncher</code></pre>
 
       <h3>NixOS</h3>
@@ -46,68 +46,68 @@ paru -S xivlauncher</code></pre>
 environment.systemPackages = [ pkgs.xivlauncher ];</code></pre>
 
       <div class="callout callout-info">
-        <strong style="color: #4a90d9;">Empfehlung:</strong> Die Flatpak-Version ist am einfachsten und bleibt automatisch aktuell.
-        AUR-Pakete sind ebenfalls gut gepflegt.
+        <strong style="color: #4a90d9;">Recommendation:</strong> The Flatpak version is the easiest and stays updated automatically.
+        AUR packages are also well maintained.
       </div>
 
-      <h2>Schritt 2: XIVLauncher starten und einrichten</h2>
+      <h2>Step 2: Launch and configure XIVLauncher</h2>
       <ol>
-        <li>Starte XIVLauncher aus dem App-Menü oder mit <code>xivlauncher</code> im Terminal</li>
-        <li>Beim ersten Start fragt der Launcher nach dem Pfad zur FF14-Installation</li>
-        <li>Falls du FF14 über Steam hast, findet XIVLauncher es meist automatisch</li>
-        <li>Logge dich mit deinem Square Enix Account ein</li>
+        <li>Start XIVLauncher from the app menu or with <code>xivlauncher</code> in the terminal</li>
+        <li>On first launch, it will ask for the path to your FF14 installation</li>
+        <li>If you have FF14 through Steam, XIVLauncher usually finds it automatically</li>
+        <li>Log in with your Square Enix account</li>
       </ol>
 
-      <h3>Steam-Integration (optional)</h3>
+      <h3>Steam integration (optional)</h3>
       <p>
-        Wenn du FF14 über Steam spielst, füge XIVLauncher als Non-Steam Game hinzu
-        oder richte die Steam Launch Option so ein:
+        If you play FF14 through Steam, add XIVLauncher as a Non-Steam Game
+        or set the Steam launch option:
       </p>
       <pre><code>env PROTON_NO_ESYNC=0 %command%</code></pre>
 
-      <h2>Schritt 3: Dalamud aktivieren</h2>
+      <h2>Step 3: Enable Dalamud</h2>
       <p>
-        Dalamud ist in XIVLauncher bereits integriert und muss nur aktiviert werden:
+        Dalamud is already integrated into XIVLauncher and just needs to be enabled:
       </p>
       <ol>
-        <li>Öffne die XIVLauncher-Einstellungen (Zahnrad-Symbol)</li>
-        <li>Gehe zu <strong>In-Game Features</strong></li>
-        <li>Aktiviere <strong>Enable Dalamud</strong></li>
-        <li>Starte das Spiel — Dalamud lädt sich beim Login automatisch</li>
+        <li>Open XIVLauncher settings (gear icon)</li>
+        <li>Go to <strong>In-Game Features</strong></li>
+        <li>Enable <strong>Enable Dalamud</strong></li>
+        <li>Launch the game — Dalamud will load automatically at login</li>
       </ol>
 
-      <h2>Schritt 4: Dalamud im Spiel nutzen</h2>
+      <h2>Step 4: Using Dalamud in-game</h2>
       <p>
-        Sobald du eingeloggt bist, erkennst du Dalamud am kleinen Plugin-Symbol in der Titelleiste.
-        Wichtige Befehle:
+        Once logged in, you can spot Dalamud by the small plugin icon in the title bar.
+        Useful commands:
       </p>
       <ul>
-        <li><code>/xlplugins</code> — Plugin-Installer öffnen</li>
-        <li><code>/xlsettings</code> — Dalamud-Einstellungen</li>
-        <li><code>/xlerror</code> — Fehlerlog anzeigen</li>
-        <li><code>/xldev</code> — Entwickler-Menü (für Plugin-Entwickler)</li>
+        <li><code>/xlplugins</code> — open the plugin installer</li>
+        <li><code>/xlsettings</code> — Dalamud settings</li>
+        <li><code>/xlerror</code> — view the error log</li>
+        <li><code>/xldev</code> — developer menu (for plugin developers)</li>
       </ul>
 
-      <h2>Häufige Probleme</h2>
+      <h2>Common issues</h2>
 
-      <h3>Dalamud lädt nicht</h3>
+      <h3>Dalamud doesn't load</h3>
       <p>
-        Nach FF14-Updates dauert es manchmal 1–2 Tage, bis Dalamud aktualisiert wurde.
-        In XIVLauncher kannst du unter <strong>In-Game Features → Beta Track</strong> wechseln,
-        um Early-Access-Versionen zu nutzen.
+        After FF14 updates it can take 1–2 days for Dalamud to be updated.
+        In XIVLauncher you can switch to <strong>In-Game Features → Beta Track</strong>
+        to use early access versions.
       </p>
 
-      <h3>Schwarzer Bildschirm beim Start</h3>
+      <h3>Black screen on startup</h3>
       <p>
-        Probiere folgende Proton-Umgebungsvariable:
+        Try setting this Proton environment variable:
       </p>
       <pre><code>PROTON_USE_WINED3D=1</code></pre>
 
-      <h3>XIVLauncher findet FF14 nicht</h3>
+      <h3>XIVLauncher can't find FF14</h3>
       <p>
-        Setze den Pfad manuell in den Einstellungen. Typische Pfade:
+        Set the path manually in the settings. Common paths:
       </p>
-      <pre><code># Steam (Standard)
+      <pre><code># Steam (default)
 ~/.steam/steam/steamapps/common/FINAL FANTASY XIV Online
 
 # Steam (Flatpak)
@@ -116,7 +116,7 @@ environment.systemPackages = [ pkgs.xivlauncher ];</code></pre>
 
     <!-- Navigation -->
     <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
-      <a href="/guides" style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">← Alle Guides</a>
+      <a href="/guides" style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">← All Guides</a>
       <a href="/guides/penumbra" style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Penumbra →</a>
     </div>
   </div>

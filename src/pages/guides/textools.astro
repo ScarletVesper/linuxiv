@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="TexTools Guide" description="TexTools unter Linux mit Wine/Proton für FF14 Mods einrichten">
+<Layout title="TexTools Guide" description="How to run TexTools on Linux with Wine/Proton for FF14 mods">
   <div style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
     <!-- Breadcrumb -->
     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
@@ -16,109 +16,109 @@ import Layout from '../../layouts/Layout.astro';
     <!-- Header -->
     <div style="margin-bottom: 2.5rem;">
       <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">Mittel</span>
+        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">Medium</span>
       </div>
-      <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">TexTools unter Linux</h1>
+      <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">TexTools on Linux</h1>
       <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">
-        TexTools ist ein Windows-Programm zum direkten Modifizieren von FF14-Dateien.
-        Unter Linux lässt es sich über Wine oder innerhalb des Proton-Prefixes betreiben.
+        TexTools is a Windows application for directly modifying FF14 files.
+        On Linux it can be run through Wine or inside the Proton prefix.
       </p>
     </div>
 
     <div style="background-color: rgba(200,80,80,0.08); border: 1px solid rgba(200,80,80,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem;">
-      <p style="color: #e05a5a; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Wichtiger Hinweis</p>
+      <p style="color: #e05a5a; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Important</p>
       <p style="color: #8a8fa8; font-size: 0.9rem; line-height: 1.7; margin: 0;">
-        TexTools modifiziert FF14-Dateien direkt. Immer ein <strong style="color: #e8e0d0;">Backup</strong> erstellen,
-        bevor du Mods installierst. Nutze die eingebaute Backup-Funktion von TexTools.
-        Für die meisten Anwendungsfälle ist <a href="/guides/penumbra" style="color: #c8a96e;">Penumbra</a> die bessere Wahl.
+        TexTools modifies FF14 files directly. Always create a <strong style="color: #e8e0d0;">backup</strong>
+        before installing any mods. Use the built-in backup feature in TexTools.
+        For most use cases, <a href="/guides/penumbra" style="color: #c8a96e;">Penumbra</a> is the better choice.
       </p>
     </div>
 
     <div class="prose">
-      <h2>Schritt 1: TexTools herunterladen</h2>
+      <h2>Step 1: Download TexTools</h2>
       <p>
-        Lade TexTools von der offiziellen Quelle herunter.
-        Du benötigst die Windows-Version (<code>.exe</code> oder <code>.zip</code>).
+        Download TexTools from the official source.
+        You need the Windows version (<code>.exe</code> or <code>.zip</code>).
       </p>
       <ul>
-        <li>Offizielle Website: <strong>textools.net</strong></li>
-        <li>Lade die aktuelle Version als ZIP-Archiv herunter</li>
-        <li>Entpacke es an einen beliebigen Ort, z.B. <code>~/tools/textools</code></li>
+        <li>Official website: <strong>textools.net</strong></li>
+        <li>Download the latest version as a ZIP archive</li>
+        <li>Extract it to a location of your choice, e.g. <code>~/tools/textools</code></li>
       </ul>
 
-      <h2>Schritt 2: Wine-Prefix vorbereiten</h2>
+      <h2>Step 2: Prepare the Wine prefix</h2>
       <p>
-        TexTools benötigt .NET Framework. Wir richten ein separates Wine-Prefix ein:
+        TexTools requires .NET Framework. Set up a separate Wine prefix:
       </p>
       <pre><code>WINEPREFIX=~/.wine-textools WINEARCH=win64 winecfg</code></pre>
       <p>
-        Installiere dann .NET Framework 4.8 mit Winetricks:
+        Then install .NET Framework 4.8 with Winetricks:
       </p>
       <pre><code>WINEPREFIX=~/.wine-textools winetricks dotnet48</code></pre>
 
       <div class="callout callout-info">
-        <strong style="color: #4a90d9;">Tipp:</strong> Falls Winetricks nicht installiert ist:
-        <code>sudo pacman -S winetricks</code> (Arch) oder <code>sudo apt install winetricks</code> (Debian/Ubuntu)
+        <strong style="color: #4a90d9;">Tip:</strong> If Winetricks is not installed:
+        <code>sudo pacman -S winetricks</code> (Arch) or <code>sudo apt install winetricks</code> (Debian/Ubuntu)
       </div>
 
-      <h2>Schritt 3: TexTools starten</h2>
+      <h2>Step 3: Launch TexTools</h2>
       <pre><code>WINEPREFIX=~/.wine-textools wine ~/tools/textools/FFXIV_TexTools.exe</code></pre>
 
       <p>
-        Beim ersten Start fragt TexTools nach dem FF14-Installationspfad.
-        Gib den Pfad innerhalb des Wine-Dateisystems an.
-        Dein Linux-Heimverzeichnis ist unter <code>Z:\</code> erreichbar:
+        On first launch, TexTools will ask for the FF14 installation path.
+        Provide the path within the Wine filesystem.
+        Your Linux home directory is accessible under <code>Z:\</code>:
       </p>
-      <pre><code># Beispiel für Steam:
-Z:\home\DEINNAME\.steam\steam\steamapps\common\FINAL FANTASY XIV Online</code></pre>
+      <pre><code># Example for Steam:
+Z:\home\YOURNAME\.steam\steam\steamapps\common\FINAL FANTASY XIV Online</code></pre>
 
-      <h2>Schritt 4: Backup erstellen</h2>
+      <h2>Step 4: Create a backup</h2>
       <p>
-        Bevor du irgendeinen Mod installierst, erstelle ein Backup der Originaldateien:
+        Before installing any mod, back up the original files:
       </p>
       <ol>
-        <li>Gehe zu <strong>Help → Backup Index Files</strong></li>
-        <li>Wähle einen sicheren Ort für das Backup</li>
-        <li>Warte, bis der Vorgang abgeschlossen ist</li>
+        <li>Go to <strong>Help → Backup Index Files</strong></li>
+        <li>Choose a safe location for the backup</li>
+        <li>Wait for the process to complete</li>
       </ol>
 
-      <h2>Schritt 5: Mod installieren</h2>
+      <h2>Step 5: Install a mod</h2>
       <p>
-        TexTools unterstützt <code>.ttmp</code> und <code>.ttmp2</code> Dateien:
+        TexTools supports <code>.ttmp</code> and <code>.ttmp2</code> files:
       </p>
       <ol>
-        <li>Gehe zu <strong>Mods → Import ModPack</strong></li>
-        <li>Wähle die <code>.ttmp2</code>-Datei aus</li>
-        <li>Überprüfe die Liste der zu ändernden Dateien</li>
-        <li>Klicke auf <strong>Import</strong></li>
+        <li>Go to <strong>Mods → Import ModPack</strong></li>
+        <li>Select the <code>.ttmp2</code> file</li>
+        <li>Review the list of files that will be changed</li>
+        <li>Click <strong>Import</strong></li>
       </ol>
 
-      <h2>Mods zurücksetzen</h2>
+      <h2>Reverting mods</h2>
       <p>
-        Falls etwas schiefläuft oder du alle Mods entfernen möchtest:
+        If something goes wrong or you want to remove all mods:
       </p>
       <ol>
-        <li>Gehe zu <strong>Mods → Revert All Mods</strong></li>
-        <li>Alternativ: <strong>Help → Restore Index Files</strong> (nutzt das Backup)</li>
+        <li>Go to <strong>Mods → Revert All Mods</strong></li>
+        <li>Alternatively: <strong>Help → Restore Index Files</strong> (uses your backup)</li>
       </ol>
 
-      <h2>Proton statt separatem Wine</h2>
+      <h2>Using Proton instead of a separate Wine</h2>
       <p>
-        Alternativ kannst du TexTools innerhalb des FF14-Proton-Prefixes ausführen.
-        Finde das Proton-Prefix deines FF14-Spiels:
+        Alternatively, you can run TexTools inside the FF14 Proton prefix.
+        Find the Proton prefix for your FF14 installation:
       </p>
-      <pre><code># Steam App-ID von FF14: 39210
+      <pre><code># Steam App ID for FF14: 39210
 ~/.steam/steam/steamapps/compatdata/39210/pfx/</code></pre>
       <pre><code>WINEPREFIX=~/.steam/steam/steamapps/compatdata/39210/pfx \
   wine ~/tools/textools/FFXIV_TexTools.exe</code></pre>
       <p>
-        Der Vorteil: TexTools kann dann direkt auf die FF14-Dateien im Windows-Pfad zugreifen.
+        The advantage: TexTools can then access FF14 files directly through the Windows path.
       </p>
     </div>
 
     <!-- Navigation -->
     <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
-      <a href="/guides" style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">← Alle Guides</a>
+      <a href="/guides" style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">← All Guides</a>
       <a href="/guides/penumbra" style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Penumbra →</a>
     </div>
   </div>

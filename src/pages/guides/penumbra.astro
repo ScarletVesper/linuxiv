@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Penumbra Guide" description="Penumbra auf Linux installieren und einrichten für FF14 Mods">
+<Layout title="Penumbra Guide" description="How to install and configure Penumbra on Linux for FF14 mods">
   <div style="max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem;">
     <!-- Breadcrumb -->
     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-size: 0.85rem; color: #8a8fa8;">
@@ -16,108 +16,108 @@ import Layout from '../../layouts/Layout.astro';
     <!-- Header -->
     <div style="margin-bottom: 2.5rem;">
       <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">Einfach</span>
-        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">Empfohlen</span>
+        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(74,217,130,0.15); color: #4ad982; font-weight: 600;">Easy</span>
+        <span style="font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 9999px; background-color: rgba(200,169,110,0.15); color: #c8a96e; font-weight: 600;">Recommended</span>
       </div>
-      <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">Penumbra installieren</h1>
+      <h1 style="font-size: 2.25rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">Installing Penumbra</h1>
       <p style="color: #8a8fa8; font-size: 1rem; line-height: 1.7;">
-        Penumbra ist ein Dalamud-Plugin, das Mods zur Laufzeit lädt — ohne den FF14-Client direkt zu patchen.
-        Es ist der sicherste und flexibelste Weg, Mods unter Linux zu nutzen.
+        Penumbra is a Dalamud plugin that loads mods at runtime — without directly patching the FF14 client.
+        It's the safest and most flexible way to use mods on Linux.
       </p>
     </div>
 
-    <!-- Voraussetzungen -->
+    <!-- Prerequisites -->
     <div style="background-color: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem;">
-      <p style="color: #4a90d9; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Voraussetzungen</p>
+      <p style="color: #4a90d9; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Prerequisites</p>
       <ul style="list-style: none; padding: 0; margin: 0; color: #8a8fa8; font-size: 0.9rem; line-height: 1.8;">
-        <li>▸ XIVLauncher mit Dalamud ist installiert und eingerichtet (<a href="/guides/dalamud" style="color: #c8a96e;">→ Dalamud Guide</a>)</li>
-        <li>▸ FF14 läuft unter Linux (Proton/Wine)</li>
+        <li>▸ XIVLauncher with Dalamud is installed and set up (<a href="/guides/dalamud" style="color: #c8a96e;">→ Dalamud Guide</a>)</li>
+        <li>▸ FF14 is running on Linux (Proton/Wine)</li>
       </ul>
     </div>
 
     <div class="prose">
-      <h2>Schritt 1: Penumbra über Dalamud installieren</h2>
+      <h2>Step 1: Install Penumbra via Dalamud</h2>
       <p>
-        Starte FF14 über XIVLauncher. Dalamud wird automatisch geladen.
-        Öffne das Plugin-Menü mit <code>/xlplugins</code> im Chat.
+        Launch FF14 through XIVLauncher. Dalamud will load automatically.
+        Open the plugin menu with <code>/xlplugins</code> in the chat.
       </p>
       <ol>
-        <li>Suche im Plugin-Installer nach <strong>Penumbra</strong></li>
-        <li>Klicke auf <strong>Installieren</strong></li>
-        <li>Nach der Installation erscheint Penumbra in der Plugin-Liste</li>
+        <li>Search for <strong>Penumbra</strong> in the plugin installer</li>
+        <li>Click <strong>Install</strong></li>
+        <li>After installation, Penumbra will appear in the plugin list</li>
       </ol>
 
-      <h2>Schritt 2: Penumbra konfigurieren</h2>
+      <h2>Step 2: Configure Penumbra</h2>
       <p>
-        Öffne Penumbra mit <code>/penumbra</code> im Chat oder über das Dalamud-Menü.
-        Richte zunächst den Mod-Ordner ein:
+        Open Penumbra with <code>/penumbra</code> in the chat or through the Dalamud menu.
+        First, set up your mod folder:
       </p>
       <ol>
-        <li>Gehe zu <strong>Settings → Root Folder</strong></li>
-        <li>Wähle einen Ordner, in dem deine Mods gespeichert werden sollen, z.B. <code>~/ff14-mods</code></li>
-        <li>Klicke auf <strong>Save &amp; Rediscover Mods</strong></li>
+        <li>Go to <strong>Settings → Root Folder</strong></li>
+        <li>Choose a folder where your mods will be stored, e.g. <code>~/ff14-mods</code></li>
+        <li>Click <strong>Save &amp; Rediscover Mods</strong></li>
       </ol>
 
       <div class="callout callout-warning">
-        <strong style="color: #c8a96e;">Tipp:</strong> Wähle einen Ordner außerhalb des FF14-Installationsverzeichnisses,
-        damit Mods bei Updates nicht verloren gehen.
+        <strong style="color: #c8a96e;">Tip:</strong> Choose a folder outside the FF14 installation directory
+        so mods are not lost during updates.
       </div>
 
-      <h2>Schritt 3: Einen Mod installieren</h2>
+      <h2>Step 3: Install a mod</h2>
       <p>
-        Lade einen Mod als <code>.pmp</code>- oder <code>.ttmp2</code>-Datei herunter (z.B. von Nexus Mods oder XIV Mod Archive).
-        Es gibt zwei Installationswege:
+        Download a mod as a <code>.pmp</code> or <code>.ttmp2</code> file (e.g. from Nexus Mods or XIV Mod Archive).
+        There are two ways to install it:
       </p>
 
-      <h3>Methode A: Drag &amp; Drop</h3>
+      <h3>Method A: Drag &amp; Drop</h3>
       <ol>
-        <li>Öffne Penumbra (<code>/penumbra</code>)</li>
-        <li>Ziehe die Mod-Datei direkt in das Penumbra-Fenster</li>
-        <li>Der Mod wird automatisch importiert und erscheint in der Liste</li>
+        <li>Open Penumbra (<code>/penumbra</code>)</li>
+        <li>Drag the mod file directly into the Penumbra window</li>
+        <li>The mod will be imported automatically and appear in the list</li>
       </ol>
 
-      <h3>Methode B: Manuell importieren</h3>
+      <h3>Method B: Manual import</h3>
       <ol>
-        <li>Öffne Penumbra und gehe zum Tab <strong>Mods</strong></li>
-        <li>Klicke auf <strong>Import Mod</strong></li>
-        <li>Wähle die heruntergeladene Mod-Datei aus</li>
+        <li>Open Penumbra and go to the <strong>Mods</strong> tab</li>
+        <li>Click <strong>Import Mod</strong></li>
+        <li>Select the downloaded mod file</li>
       </ol>
 
-      <h2>Schritt 4: Mod aktivieren</h2>
+      <h2>Step 4: Enable the mod</h2>
       <ol>
-        <li>In der Mod-Liste: Klicke auf den importierten Mod</li>
-        <li>Aktiviere den Mod mit dem Schalter oben rechts</li>
-        <li>Klicke auf <strong>Apply</strong> — die Änderungen werden sofort im Spiel sichtbar</li>
+        <li>In the mod list: click on the imported mod</li>
+        <li>Enable it using the toggle in the top right</li>
+        <li>Click <strong>Apply</strong> — changes will be visible in-game immediately</li>
       </ol>
 
       <div class="callout callout-info">
-        <strong style="color: #4a90d9;">Hinweis:</strong> Penumbra lädt Mods in Echtzeit. Du musst das Spiel nicht neu starten.
-        Manche Mods erfordern jedoch einen Zonenwechsel oder das erneute Laden einer Szene.
+        <strong style="color: #4a90d9;">Note:</strong> Penumbra loads mods in real time. You do not need to restart the game.
+        Some mods may require a zone change or scene reload to take effect.
       </div>
 
-      <h2>Mod-Konflikte lösen</h2>
+      <h2>Resolving mod conflicts</h2>
       <p>
-        Wenn zwei Mods dieselben Dateien verändern, kann es zu Konflikten kommen.
-        Penumbra zeigt diese in der Mod-Liste an (roter Indikator).
-        Du kannst die Priorität der Mods mit Drag &amp; Drop in der Liste anpassen —
-        weiter oben bedeutet höhere Priorität.
+        If two mods modify the same files, conflicts can occur.
+        Penumbra highlights these in the mod list with a red indicator.
+        You can adjust mod priority by dragging them in the list —
+        higher up means higher priority.
       </p>
 
-      <h2>Linux-spezifische Hinweise</h2>
+      <h2>Linux-specific notes</h2>
       <p>
-        Penumbra läuft unter Linux in der Regel problemlos, da es als Dalamud-Plugin
-        im selben Wine/Proton-Prozess wie das Spiel läuft. Folgendes solltest du beachten:
+        Penumbra generally works without issues on Linux, as it runs as a Dalamud plugin
+        within the same Wine/Proton process as the game. Keep in mind:
       </p>
       <ul>
-        <li>Der Mod-Ordner sollte im Linux-Dateisystem liegen (nicht im Wine-Prefix), außer du hast spezielle Gründe</li>
-        <li>Achte bei Pfaden auf korrekte Groß-/Kleinschreibung (Linux ist case-sensitive)</li>
-        <li>Symlinks werden unterstützt</li>
+        <li>The mod folder should be on the Linux filesystem (not inside the Wine prefix), unless you have a specific reason</li>
+        <li>Pay attention to case sensitivity in paths (Linux is case-sensitive)</li>
+        <li>Symlinks are supported</li>
       </ul>
     </div>
 
     <!-- Navigation -->
     <div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #2a2f3e;">
-      <a href="/guides" style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">← Alle Guides</a>
+      <a href="/guides" style="color: #8a8fa8; text-decoration: none; font-size: 0.9rem;" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='#8a8fa8'">← All Guides</a>
       <a href="/guides/dalamud" style="color: #c8a96e; text-decoration: none; font-size: 0.9rem;">Dalamud & XIVLauncher →</a>
     </div>
   </div>
