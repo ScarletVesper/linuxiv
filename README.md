@@ -18,10 +18,6 @@ Modding FF14 on Linux can be tricky — most guides assume Windows. This site ai
 | [Penumbra](https://linuxiv.com/guides/penumbra) | Load mods at runtime without patching the game client (recommended) |
 | [TexTools](https://linuxiv.com/guides/textools) | Run TexTools via Wine/Proton for direct file modifications |
 
-## Contributing
-
-Found an error or want to add a guide? Feel free to open an issue or pull request.
-
 ## Disclaimer
 
 This site is not affiliated with Square Enix. Modding FF14 may violate the Terms of Service — use at your own risk.
