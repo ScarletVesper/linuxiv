@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ff-gold: #c8a96e;
+  --color-ff-gold-light: #e0c68a;
+  --color-ff-blue: #4a90d9;
+  --color-ff-purple: #7c5cbf;
+  --color-bg-primary: #0d0f14;
+  --color-bg-secondary: #13161e;
+  --color-bg-card: #1a1e2a;
+  --color-bg-border: #2a2f3e;
+  --color-text-primary: #e8e0d0;
+  --color-text-muted: #8a8fa8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-bg-border);
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: var(--color-ff-gold);
+  }
+  .text-gold-light {
+    color: var(--color-ff-gold-light);
+  }
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+  .bg-card {
+    background-color: var(--color-bg-card);
+  }
+  .border-subtle {
+    border-color: var(--color-bg-border);
+  }
+}
+
+/* Prose styles for guide content */
+.prose h2 {
+  color: var(--color-ff-gold);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-bg-border);
+}
+
+.prose h3 {
+  color: var(--color-ff-gold-light);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.prose ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.prose ul li {
+  color: var(--color-text-primary);
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  position: relative;
+  line-height: 1.7;
+}
+
+.prose ul li::before {
+  content: '▸';
+  color: var(--color-ff-gold);
+  position: absolute;
+  left: 0;
+}
+
+.prose ol {
+  counter-reset: item;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.prose ol li {
+  counter-increment: item;
+  color: var(--color-text-primary);
+  padding: 0.25rem 0 0.25rem 2rem;
+  position: relative;
+  line-height: 1.7;
+}
+
+.prose ol li::before {
+  content: counter(item) ".";
+  color: var(--color-ff-gold);
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+}
+
+.prose code {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-ff-gold-light);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.prose pre {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+}
+
+.prose a {
+  color: var(--color-ff-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--color-ff-gold-light);
+}
+
+.prose strong {
+  color: var(--color-ff-gold-light);
+  font-weight: 600;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-ff-gold);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.callout {
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border: 1px solid;
+}
+
+.callout-info {
+  background-color: rgba(74, 144, 217, 0.1);
+  border-color: rgba(74, 144, 217, 0.4);
+}
+
+.callout-warning {
+  background-color: rgba(200, 169, 110, 0.1);
+  border-color: rgba(200, 169, 110, 0.4);
+}
+
+.callout-danger {
+  background-color: rgba(200, 80, 80, 0.1);
+  border-color: rgba(200, 80, 80, 0.4);
+}

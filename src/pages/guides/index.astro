@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const guides = [
+  {
+    slug: 'penumbra',
+    title: 'Penumbra',
+    description: 'Mods zur Laufzeit laden ohne den Client zu patchen – der empfohlene Weg für Linux.',
+    tags: ['Mods', 'Empfohlen'],
+    difficulty: 'Einfach',
+    readTime: '5 min',
+  },
+  {
+    slug: 'dalamud',
+    title: 'Dalamud & XIVLauncher',
+    description: 'XIVLauncher mit Dalamud-Plugin-Support auf Linux einrichten.',
+    tags: ['Plugins', 'Launcher'],
+    difficulty: 'Einfach',
+    readTime: '8 min',
+  },
+  {
+    slug: 'textools',
+    title: 'TexTools',
+    description: 'TexTools unter Wine/Proton betreiben für direkte Datei-Modifikationen.',
+    tags: ['Texturen', 'Wine'],
+    difficulty: 'Mittel',
+    readTime: '10 min',
+  },
+];
+---
+
+<Layout title="Guides" description="Alle FF14 Mod-Guides für Linux">
+  <div style="max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem;">
+    <h1 style="font-size: 2rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.5rem;">Alle Guides</h1>
+    <p style="color: #8a8fa8; margin-bottom: 3rem;">FF14 Mods auf Linux einrichten – Schritt für Schritt.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      {guides.map((guide) => (
+        <a
+          href={`/guides/${guide.slug}`}
+          style="display: flex; align-items: center; justify-content: space-between; background-color: #1a1e2a; border: 1px solid #2a2f3e; border-radius: 12px; padding: 1.5rem; text-decoration: none; gap: 1rem;"
+          onmouseover="this.style.borderColor='#c8a96e'"
+          onmouseout="this.style.borderColor='#2a2f3e'"
+        >
+          <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem;">
+              <h2 style="font-size: 1.05rem; font-weight: 700; color: #e8e0d0; margin: 0;">{guide.title}</h2>
+              <span style={`font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 9999px; font-weight: 600; ${guide.difficulty === 'Einfach' ? 'background-color: rgba(74,217,130,0.15); color: #4ad982;' : 'background-color: rgba(200,169,110,0.15); color: #c8a96e;'}`}>
+                {guide.difficulty}
+              </span>
+            </div>
+            <p style="color: #8a8fa8; font-size: 0.9rem; margin: 0 0 0.75rem;">{guide.description}</p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              {guide.tags.map((tag) => (
+                <span style="font-size: 0.72rem; color: #8a8fa8; background-color: #13161e; border: 1px solid #2a2f3e; padding: 0.15rem 0.6rem; border-radius: 4px;">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div style="color: #8a8fa8; font-size: 0.8rem; white-space: nowrap; display: flex; align-items: center; gap: 0.5rem;">
+            {guide.readTime}
+            <span style="color: #c8a96e;">→</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>
