@@ -77,9 +77,17 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
         <p style="color: #8a8fa8; font-size: 0.8rem; margin-bottom: 1.5rem;">
           {t(lang, 'construction.contact')} <a href="mailto:contact@linuxiv.com" style="color: #c8a96e; text-decoration: none;">contact@linuxiv.com</a>
         </p>
-        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.3); border-radius: 9999px; padding: 0.4rem 1.1rem;">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.3); border-radius: 9999px; padding: 0.4rem 1.1rem; margin-bottom: 1.5rem;">
           <span style="width: 7px; height: 7px; background-color: #c8a96e; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
           <span style="color: #c8a96e; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;">linuxiv.com</span>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 0.5rem;">
+          {Object.entries(languages).map(([code, label]) => (
+            <a
+              href={`/${code}/`}
+              style={`font-size: 0.8rem; font-weight: 700; text-decoration: none; padding: 0.3rem 0.6rem; border-radius: 6px; border: 1px solid; ${code === lang ? 'color: #c8a96e; border-color: rgba(200,169,110,0.4); background-color: rgba(200,169,110,0.1);' : 'color: #8a8fa8; border-color: #2a2f3e;'}`}
+            >{label}</a>
+          ))}
         </div>
       </div>
     </div>
