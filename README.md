@@ -20,4 +20,4 @@ I play Final Fantasy XIV on Linux and modding can be tricky — most guides out 
 
 ## Disclaimer
 
-This site is not affiliated with Square Enix. Modding FF14 may violate the Terms of Service — use at your own risk.
+This site is not affiliated with Square Enix. Modding FF14 may violate the Terms of Service use at your own risk.
