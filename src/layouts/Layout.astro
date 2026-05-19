@@ -50,7 +50,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
     </header>
 
     <!-- Blurred content -->
-    <div style="filter: blur(4px); pointer-events: none; user-select: none;">
+    <div id="page-content" style="filter: blur(4px); pointer-events: none; user-select: none;">
       <main>
         <slot />
       </main>
@@ -65,8 +65,8 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
     </div>
 
     <!-- Under Construction Overlay -->
-    <div style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
-      <div style="background-color: #13161e; border: 1px solid #2a2f3e; border-radius: 16px; padding: 3rem 3.5rem; text-align: center; max-width: 480px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.6);">
+    <div id="construction-overlay" style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: rgba(13,15,20,0.9);">
+      <div id="construction-panel" style="background-color: #13161e; border: 1px solid #2a2f3e; border-radius: 16px; padding: 3rem 3.5rem; text-align: center; max-width: 480px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.6);">
         <div style="font-size: 3rem; margin-bottom: 1.25rem;">⚒</div>
         <h2 style="font-size: 1.6rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">
           {t(lang, 'construction.title')}
@@ -91,6 +91,32 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      const overlay = document.getElementById('construction-overlay');
+      const panel = document.getElementById('construction-panel');
+      const pageContent = document.getElementById('page-content');
+
+      function hideOverlay() {
+        if (!overlay || !pageContent) return;
+        overlay.style.display = 'none';
+        pageContent.style.filter = '';
+        pageContent.style.pointerEvents = 'auto';
+        pageContent.style.userSelect = 'auto';
+      }
+
+      if (overlay && panel) {
+        overlay.addEventListener('click', (event) => {
+          if (event.target === overlay) {
+            hideOverlay();
+          }
+        });
+
+        panel.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
+      }
+    </script>
 
     <style>
       @keyframes pulse {
