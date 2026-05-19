@@ -10,7 +10,8 @@ interface Props {
 
 const { title, lang, description = t(lang, 'hero.body') } = Astro.props;
 const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
-const isHomepage = /^\/(?:[a-z]{2}\/?)?$/.test(Astro.url.pathname);
+const normalizedPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isHomepage = normalizedPath === '/' || ['/en', '/de', '/fr', '/ja'].includes(normalizedPath);
 ---
 
 <!doctype html>
@@ -99,6 +100,7 @@ const isHomepage = /^\/(?:[a-z]{2}\/?)?$/.test(Astro.url.pathname);
           const overlay = document.getElementById('construction-overlay');
           const panel = document.getElementById('construction-panel');
           const pageContent = document.getElementById('page-content');
+          const isClientHomepage = /^\/(?:[a-z]{2}\/?)?$/.test(window.location.pathname);
 
           function hideOverlay() {
             if (!overlay || !pageContent) return;
@@ -110,7 +112,9 @@ const isHomepage = /^\/(?:[a-z]{2}\/?)?$/.test(Astro.url.pathname);
           }
 
           if (overlay && panel) {
-            if (localStorage.getItem('constructionHidden') === 'true') {
+            if (!isClientHomepage) {
+              overlay.style.display = 'none';
+            } else if (localStorage.getItem('constructionHidden') === 'true') {
               hideOverlay();
             }
 
