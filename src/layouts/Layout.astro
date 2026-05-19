@@ -108,14 +108,11 @@ const isHomepage = normalizedPath === '/' || ['/en', '/de', '/fr', '/ja'].includ
             pageContent.style.filter = '';
             pageContent.style.pointerEvents = 'auto';
             pageContent.style.userSelect = 'auto';
-            localStorage.setItem('constructionHidden', 'true');
           }
 
           if (overlay && panel) {
             if (!isClientHomepage) {
               overlay.style.display = 'none';
-            } else if (localStorage.getItem('constructionHidden') === 'true') {
-              hideOverlay();
             }
 
             overlay.addEventListener('click', (event) => {
