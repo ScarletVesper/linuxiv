@@ -16,7 +16,7 @@ const distros = [
     guides: [
       { slug: 'penumbra', title: 'Penumbra' },
       { slug: 'dalamud', title: 'Dalamud & XIVLauncher' },
-      { slug: 'textools', title: 'TexTools' },
+      { slug: 'textools', title: 'TexTools', comingSoon: true },
     ],
   },
   { name: 'Fedora', open: false, guides: [] },
@@ -56,18 +56,26 @@ const currentPath = Astro.url.pathname;
             {distro.guides.length > 0 ? (
               <ul style="list-style: none; padding: 0.25rem 0 0.25rem 0.75rem; margin: 0; display: flex; flex-direction: column; gap: 0.1rem;">
                 {distro.guides.map((g) => {
-                  const href = `/${lang}/guides/${g.slug}`;
-                  const isActive = currentPath === href || currentPath === href + '/';
+                  const isComingSoon = g.comingSoon === true;
+                  const href = isComingSoon ? undefined : `/${lang}/guides/${g.slug}`;
+                  const isActive = !isComingSoon && (currentPath === href || currentPath === href + '/');
                   return (
                     <li>
-                      <a
-                        href={href}
-                        style={`display: block; padding: 0.35rem 0.75rem; border-radius: 6px; text-decoration: none; font-size: 0.875rem; border-left: 2px solid; ${isActive ? 'color: #c8a96e; border-left-color: #c8a96e; background-color: rgba(200,169,110,0.08);' : 'color: #8a8fa8; border-left-color: #2a2f3e;'}`}
-                        onmouseover={!isActive ? "this.style.color='#c8a96e'; this.style.borderLeftColor='#c8a96e';" : ''}
-                        onmouseout={!isActive ? "this.style.color='#8a8fa8'; this.style.borderLeftColor='#2a2f3e';" : ''}
-                      >
-                        {g.title}
-                      </a>
+                      {isComingSoon ? (
+                        <div style="display: block; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.875rem; border-left: 2px solid; color: #8a8fa8; border-left-color: #2a2f3e; opacity: 0.8;">
+                          {g.title}
+                          <span style="margin-left: 0.5rem; color: #c8a96e; font-size: 0.75rem;">{comingSoonLabel[lang]}</span>
+                        </div>
+                      ) : (
+                        <a
+                          href={href}
+                          style={`display: block; padding: 0.35rem 0.75rem; border-radius: 6px; text-decoration: none; font-size: 0.875rem; border-left: 2px solid; ${isActive ? 'color: #c8a96e; border-left-color: #c8a96e; background-color: rgba(200,169,110,0.08);' : 'color: #8a8fa8; border-left-color: #2a2f3e;'}`}
+                          onmouseover={!isActive ? "this.style.color='#c8a96e'; this.style.borderLeftColor='#c8a96e';" : ''}
+                          onmouseout={!isActive ? "this.style.color='#8a8fa8'; this.style.borderLeftColor='#2a2f3e';" : ''}
+                        >
+                          {g.title}
+                        </a>
+                      )}
                     </li>
                   );
                 })}
