@@ -10,13 +10,7 @@ interface Props {
 
 const { title, lang, description = t(lang, 'hero.body') } = Astro.props;
 const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
-const isHomepage = [
-  '/',
-  '/en/',
-  '/de/',
-  '/fr/',
-  '/ja/',
-].includes(Astro.url.pathname);
+const isHomepage = pathWithoutLocale === '/';
 ---
 
 <!doctype html>
