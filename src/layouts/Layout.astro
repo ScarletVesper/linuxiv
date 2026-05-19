@@ -10,6 +10,7 @@ interface Props {
 
 const { title, lang, description = t(lang, 'hero.body') } = Astro.props;
 const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
+const isHomepage = /^\/(?:[a-z]{2}\/?)?$/.test(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -50,7 +51,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
     </header>
 
     <!-- Blurred content -->
-    <div id="page-content" style="filter: blur(4px); pointer-events: none; user-select: none;">
+    <div id="page-content" style={isHomepage ? 'filter: blur(4px); pointer-events: none; user-select: none;' : ''}>
       <main>
         <slot />
       </main>
@@ -64,59 +65,68 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/[a-z]{2}/, '') || '/';
       </footer>
     </div>
 
-    <!-- Under Construction Overlay -->
-    <div id="construction-overlay" style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: rgba(13,15,20,0.9);">
-      <div id="construction-panel" style="background-color: #13161e; border: 1px solid #2a2f3e; border-radius: 16px; padding: 3rem 3.5rem; text-align: center; max-width: 480px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.6);">
-        <div style="font-size: 3rem; margin-bottom: 1.25rem;">⚒</div>
-        <h2 style="font-size: 1.6rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">
-          {t(lang, 'construction.title')}
-        </h2>
-        <p style="color: #8a8fa8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem;">
-          {t(lang, 'construction.body')}
-        </p>
-        <p style="color: #8a8fa8; font-size: 0.8rem; margin-bottom: 1.5rem;">
-          {t(lang, 'construction.contact')} <a href="mailto:contact@linuxiv.com" style="color: #c8a96e; text-decoration: none;">contact@linuxiv.com</a>
-        </p>
-        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.3); border-radius: 9999px; padding: 0.4rem 1.1rem; margin-bottom: 1.5rem;">
-          <span style="width: 7px; height: 7px; background-color: #c8a96e; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
-          <span style="color: #c8a96e; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;">linuxiv.com</span>
+    {isHomepage && (
+      <>
+        <!-- Under Construction Overlay -->
+        <div id="construction-overlay" style="position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: rgba(13,15,20,0.9);">
+          <div id="construction-panel" style="background-color: #13161e; border: 1px solid #2a2f3e; border-radius: 16px; padding: 3rem 3.5rem; text-align: center; max-width: 480px; width: 100%; box-shadow: 0 25px 60px rgba(0,0,0,0.6);">
+            <div style="font-size: 3rem; margin-bottom: 1.25rem;">⚒</div>
+            <h2 style="font-size: 1.6rem; font-weight: 800; color: #e8e0d0; margin-bottom: 0.75rem;">
+              {t(lang, 'construction.title')}
+            </h2>
+            <p style="color: #8a8fa8; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem;">
+              {t(lang, 'construction.body')}
+            </p>
+            <p style="color: #8a8fa8; font-size: 0.8rem; margin-bottom: 1.5rem;">
+              {t(lang, 'construction.contact')} <a href="mailto:contact@linuxiv.com" style="color: #c8a96e; text-decoration: none;">contact@linuxiv.com</a>
+            </p>
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.3); border-radius: 9999px; padding: 0.4rem 1.1rem; margin-bottom: 1.5rem;">
+              <span style="width: 7px; height: 7px; background-color: #c8a96e; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
+              <span style="color: #c8a96e; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;">linuxiv.com</span>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 0.5rem;">
+              {Object.entries(languages).map(([code, label]) => (
+                <a
+                  href={`/${code}/`}
+                  style={`font-size: 0.8rem; font-weight: 700; text-decoration: none; padding: 0.3rem 0.6rem; border-radius: 6px; border: 1px solid; ${code === lang ? 'color: #c8a96e; border-color: rgba(200,169,110,0.4); background-color: rgba(200,169,110,0.1);' : 'color: #8a8fa8; border-color: #2a2f3e;'}`}
+                >{label}</a>
+              ))}
+            </div>
+          </div>
         </div>
-        <div style="display: flex; justify-content: center; gap: 0.5rem;">
-          {Object.entries(languages).map(([code, label]) => (
-            <a
-              href={`/${code}/`}
-              style={`font-size: 0.8rem; font-weight: 700; text-decoration: none; padding: 0.3rem 0.6rem; border-radius: 6px; border: 1px solid; ${code === lang ? 'color: #c8a96e; border-color: rgba(200,169,110,0.4); background-color: rgba(200,169,110,0.1);' : 'color: #8a8fa8; border-color: #2a2f3e;'}`}
-            >{label}</a>
-          ))}
-        </div>
-      </div>
-    </div>
 
-    <script type="text/javascript">
-      const overlay = document.getElementById('construction-overlay');
-      const panel = document.getElementById('construction-panel');
-      const pageContent = document.getElementById('page-content');
+        <script type="text/javascript">
+          const overlay = document.getElementById('construction-overlay');
+          const panel = document.getElementById('construction-panel');
+          const pageContent = document.getElementById('page-content');
 
-      function hideOverlay() {
-        if (!overlay || !pageContent) return;
-        overlay.style.display = 'none';
-        pageContent.style.filter = '';
-        pageContent.style.pointerEvents = 'auto';
-        pageContent.style.userSelect = 'auto';
-      }
-
-      if (overlay && panel) {
-        overlay.addEventListener('click', (event) => {
-          if (event.target === overlay) {
-            hideOverlay();
+          function hideOverlay() {
+            if (!overlay || !pageContent) return;
+            overlay.style.display = 'none';
+            pageContent.style.filter = '';
+            pageContent.style.pointerEvents = 'auto';
+            pageContent.style.userSelect = 'auto';
+            localStorage.setItem('constructionHidden', 'true');
           }
-        });
 
-        panel.addEventListener('click', (event) => {
-          event.stopPropagation();
-        });
-      }
-    </script>
+          if (overlay && panel) {
+            if (localStorage.getItem('constructionHidden') === 'true') {
+              hideOverlay();
+            }
+
+            overlay.addEventListener('click', (event) => {
+              if (event.target === overlay) {
+                hideOverlay();
+              }
+            });
+
+            panel.addEventListener('click', (event) => {
+              event.stopPropagation();
+            });
+          }
+        </script>
+      </>
+    )}
 
     <style>
       @keyframes pulse {
